@@ -17,14 +17,21 @@ parameters:
   data.return_doy:
     value: True
   data.data_fold_id:
-    values: [0, 1, 2, 3, 4, 5]
+    values:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
   data.features_to_keep:
-    value: null
+    values:
+      - None # All features
   data.n_leading_observations:
     value: 5
   data.batch_size:
     value: 32
-  trainer.max_steps:
+  trainer.max_steps: 
     value: 10000
   do_test:
     value: True
