@@ -1,0 +1,31 @@
+command:
+  - ${env}
+  - python
+  - ${program}
+  - -c
+  - cfgs/Continuous/all_features.yaml
+  - --trainer
+  - cfgs/trainer_single_gpu.yaml
+  - --data
+  - cfgs/data_monotemporal_full_features.yaml
+  - ${args}
+method: grid
+metric:
+  goal: maximize
+  name: test_AP
+parameters:
+  data.return_doy:
+    value: True
+  data.data_fold_id:
+    values: [0, 1, 2, 3, 4, 5]
+  data.features_to_keep:
+    value: null
+  data.n_leading_observations:
+    value: 5
+  data.batch_size:
+    value: 32
+  trainer.max_steps:
+    value: 10000
+  do_test:
+    value: True
+program: src/train.py
